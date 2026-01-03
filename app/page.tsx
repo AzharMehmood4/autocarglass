@@ -280,7 +280,147 @@ const page = () => {
               Fast, Reliable <span className="">Auto WindScreen </span> Repair Service
             </h1>
 
-                </>
+            {/* Description */}
+            <p className="text-gray-600 mb-6 text-base leading-relaxed">
+              Restore your view today with quality service and expert
+              technicians. Same-day windscreen replacement in Birmingham with
+              lifetime guarantee.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <a
+                href="https://wa.me/07466332215?text=Hi%20I%20need%20a%20quick%20windscreen%20repair!" // 👈 replace with your WhatsApp number
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-[#3D3E42] hover:bg-[#53545a] text-white font-semibold px-5 py-3 rounded-md shadow-md transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 10.5L19.5 6.75m0 0L23.25 10.5M19.5 6.75V18"
+                  />
+                </svg>
+                Chat Now for Quick Fix
+              </a>
+              <a href="#contact" className="scroll-smooth">
+                <button className="border border-[#3D3E42] text-[#3D3E42] hover:bg-[#53545a] hover:text-white font-semibold px-5 py-3 rounded-md shadow-md transition">
+                  Book Now
+                </button>
+              </a>
+            </div>
+
+            {/* Service Icons */}
+            <div className="flex flex-wrap gap-8">
+              <div className="flex items-center gap-2">
+                <div className="text-green-500 text-2xl">✔</div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">
+                    Same Day
+                  </p>
+                  <p className="text-xs text-gray-600">Service Available</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="text-green-500 text-2xl">🏅</div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">
+                    Lifetime
+                  </p>
+                  <p className="text-xs text-gray-600">Guarantee</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="text-[#3D3E42] text-2xl">📱</div>
+                <div>
+                  <p className="text-sm font-semibold text-[#3D3E42]">Mobile</p>
+                  <p className="text-xs text-[#3D3E42]">Service Available</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE CARD */}
+          <div className="bg-gray-50 shadow-lg rounded-2xl overflow-hidden p-5">
+            <div>
+              <Image
+                src="/heroo.png"
+                alt="Mechanic working"
+                width={500}
+                height={300}
+                className="rounded-xl mx-auto object-cover "
+              />
+            </div>
+            <div className="flex flex-col items-center text-center p-6 rounded-lg">
+              <h3 className="text-lg font-bold text-gray-900">
+                Get Instant Quote
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Fast, reliable, professional service
+              </p>
+              <a
+                href="tel:+447466332215"
+                className="bg-[#3D3E42] hover:bg-[#53545a] text-white font-semibold px-4 py-2 rounded-full shadow-md"
+              >
+                Call Now: 07466 332215
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Our Servise  */}
+      <section id="services" className="bg-white pt-20 pb-14  px-5 sm:px-16">
+        <div className="max-w-full mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Our Services
+          </h2>
+          <p className="text-gray-600 mb-16 max-w-2xl mx-auto">
+            Fast, reliable Auto WindScreen  repair services with expert technicians.
+            Quality service you can trust for all your windscreen needs.
+          </p>
+
+          {/* Cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+              >
+                <img
+                  src={service.img}
+                  alt={service.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6 text-left">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4">{service.desc}</p>
+                  <ul className="space-y-2 text-gray-700 text-sm mb-6">
+                    {service.points.map((p, i) => (
+                      <li key={i}>• {p}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+    </>
   );
 };
 
