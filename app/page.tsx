@@ -275,7 +275,12 @@ const page = () => {
               <p className="text-gray-700 text-sm">5.0 Rating • 500+ Reviews</p>
             </div>
 
-    </>
+            {/* Title */}
+            <h1 className="text-[2rem] sm:text-5xl font-extrabold leading-tight text-gray-900 mb-4">
+              Fast, Reliable <span className="">Auto WindScreen </span> Repair Service
+            </h1>
+
+                </>
   );
 };
 
