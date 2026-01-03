@@ -261,6 +261,20 @@ const page = () => {
         </div>
       </nav>
 
+      {/* Hero sectioon  */}
+      <div
+        id="home"
+        className="bg-white  min-h-[87vh] mx-auto flex items-center justify-center px-5 sm:px-16 py-0 sm:pt-24"
+      >
+        <div className="max-w-full w-full grid md:grid-cols-2 gap-10 items-center">
+          {/* LEFT CONTENT */}
+          <div>
+            {/* Rating */}
+            <div className="flex items-center gap-2 mb-3">
+              <div className="flex text-yellow-400 text-lg">★★★★★</div>
+              <p className="text-gray-700 text-sm">5.0 Rating • 500+ Reviews</p>
+            </div>
+
     </>
   );
 };
