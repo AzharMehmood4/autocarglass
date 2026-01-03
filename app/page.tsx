@@ -1,0 +1,268 @@
+"use client"; // important for useState
+import Image from "next/image";
+import { useState, ChangeEvent, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+const page = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // inside  page component
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  // Handle input changes
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const { name, phone, email, message } = formData;
+
+    if (!name || !phone || !email || !message) {
+      alert("Please fill all fields!");
+      return;
+    }
+
+    try {
+      const result = await emailjs.send(
+        "service_0dlcdep", //EmailJS Service ID
+        "template_lwze6y7", //EmailJS Template ID
+        {
+          user_name: name,
+          user_email: email,
+          user_phone: phone,
+          message,
+        },
+        "ZG-km6DzpFrjbYTHL" //EmailJS Public Key
+      );
+
+      if (result.status === 200) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Try again later.");
+    }
+  };
+
+  // our services
+  const services = [
+    {
+      title: "Same-Day Windscreen Replacement",
+      desc: "Complete windscreen replacement using high-quality glass with lifetime guarantee.",
+      img: "/day.png",
+      points: [
+        "Brand New Glass",
+        "Second-Hand Options",
+        "Lifetime Guarantee",
+        "Same Day Service",
+      ],
+    },
+    {
+      title: "Mobile Windscreen Service",
+      desc: "We come to you! Professional mobile windscreen replacement at your location.",
+      img: "/mobilw w.png",
+      points: [
+        "Home Service",
+        "Office Service",
+        "Roadside Service",
+        "Convenient Scheduling",
+      ],
+    },
+    {
+      title: "High-Quality Glass & Guarantee",
+      desc: "Premium quality glass installation with comprehensive lifetime guarantee.",
+      img: "/high.png",
+      points: [
+        "OEM Quality Glass",
+        "Lifetime Guarantee",
+        "Expert Installation",
+        "Quality Assured",
+      ],
+    },
+  ];
+  // Feature why choose us
+  const features = [
+    {
+      icon: "🛠️",
+      title: "Same Day Service",
+      desc: "Most replacements completed within 2–4 hours",
+    },
+    {
+      icon: "⚡",
+      title: "Mobile Service",
+      desc: "We come to your home, office, or anywhere convenient",
+    },
+    {
+      icon: "💎",
+      title: "Flexible Options",
+      desc: "Brand new and second-hand glass options available",
+    },
+    {
+      icon: "🚗",
+      title: "Lifetime Guarantee",
+      desc: "All our work comes with a comprehensive lifetime guarantee",
+    },
+  ];
+
+  // Customer Reviews Data
+  const reviews = [
+    {
+      name: "Sarah Johnson",
+      location: "Birmingham",
+      review:
+        "Absolutely fantastic service! They came to my office within 2 hours of calling and replaced my windscreen while I was in meetings. Professional, efficient, and great value for money.",
+      rating: "5.0",
+      img: "sarah.png",
+    },
+    {
+      name: "Mike Thompson",
+      location: "Solihull",
+      review:
+        "Had a stone chip that turned into a crack overnight. AutoCar WindScreen  fixed it the same day and it's been perfect ever since. The technician was knowledgeable and explained everything clearly.",
+      rating: "5.0",
+      img: "Mike.png",
+    },
+    {
+      name: "Emma Williams",
+      location: "West Bromwich",
+      review:
+        "Needed a quick fix for my windscreen and they delivered exactly that. Professional service, lifetime guarantee, and very reasonable prices. Highly recommend!",
+      rating: "5.0",
+      img: "Emma.png",
+    },
+    {
+      name: "David Brown",
+      location: "Coventry",
+      review:
+        "Called them on a Sunday morning when my windscreen cracked badly. They were there within the hour and had me back on the road safely. Exceptional customer service!",
+      rating: "5.0",
+      img: "David.png",
+    },
+    {
+      name: "Lisa Davis",
+      location: "Dudley",
+      review:
+        "Third time using AutoCar WindScreen  over the years. Consistent quality, fair pricing, and always professional. They're my go-to for any Auto WindScreen  needs.",
+      rating: "5.0",
+      img: "Lisa.png",
+    },
+    {
+      name: "James Wilson",
+      location: "Walsall",
+      review:
+        "Competitive quote, same-day service, and lifetime guarantee. The technician was punctual and cleaned up perfectly after the job. Couldn't ask for better service.",
+      rating: "5.0",
+      img: "James.png",
+    },
+  ];
+
+  return (
+    <>
+      {/* Navbar */}
+      {/* COLLAPSIBLE NAVBAR */}
+      <nav className="w-full sm:fixed sm:top-0 sm:left-0 sm:z-50 bg-white/90 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.08)] py-5 px-6">
+        <div className="flex justify-between items-center">
+          {/* Optional Logo */}
+          <div className="text-xl font-bold text-gray-800">AutoCar WindScreen </div>
+
+          {/* Desktop Menu */}
+          <ul className="hidden sm:flex flex-row gap-3 sm:gap-8 text-gray-800 font-medium">
+            {[
+              { name: "Home", href: "#home" },
+              { name: "Services", href: "#services" },
+              { name: "About", href: "#about" },
+              { name: "Reviews", href: "#reviews" },
+              { name: "Contact", href: "#contact" },
+            ].map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.href}
+                  className="block px-4 py-2 rounded-full border border-gray-200 transition-all duration-300 ease-in-out cursor-pointer hover:border-gray-400 hover:bg-gray-100 hover:shadow-lg hover:-translate-y-1"
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+          >
+            <svg
+              className="w-7 h-7 text-gray-800"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Menu (Collapsible) */}
+        <div
+          className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <ul className="flex flex-col w-full bg-white border-t border-gray-200">
+            {[
+              { name: "Home", href: "#home" },
+              { name: "Services", href: "#services" },
+              { name: "About", href: "#about" },
+              { name: "Reviews", href: "#reviews" },
+              { name: "Contact", href: "#contact" },
+            ].map((item, index) => (
+              <li
+                key={index}
+                className="w-full border-b border-gray-100 last:border-b-0"
+              >
+                <a
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block w-full text-center py-4 text-gray-800 font-medium transition-all duration-200 hover:bg-gray-50 hover:text-blue-600"
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+
+    </>
+  );
+};
+
+export default page;
