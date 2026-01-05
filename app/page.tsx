@@ -419,6 +419,23 @@ const page = () => {
         </div>
       </section>
 
+      {/* Why choose Us  */}
+      <section id="" className="bg-white  py-10 px-5 sm:px-16">
+        <div className="max-w-full mx-auto text-center">
+          {/* Heading */}
+          <h2 className="text-4xl font-bold text-gray-900 mb-12 mx-auto">
+            Why Choose Auto Car WindScreen Ltd?
+          </h2>
+
+          {/* Features Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
     </>
   );
