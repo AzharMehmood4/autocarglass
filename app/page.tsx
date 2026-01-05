@@ -418,7 +418,7 @@ const page = () => {
           </div>
         </div>
       </section>
-
+      
       {/* Why choose Us  */}
       <section id="" className="bg-white  py-10 px-5 sm:px-16">
         <div className="max-w-full mx-auto text-center">
@@ -430,6 +430,16 @@ const page = () => {
           {/* Features Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
+              <div
+                key={index}
+                className="p-8 rounded-2xl bg-gray-50 shadow-sm hover:shadow-lg transition"
+              >
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{feature.desc}</p>
+              </div>
             ))}
           </div>
         </div>
