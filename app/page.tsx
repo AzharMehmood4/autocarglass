@@ -449,7 +449,7 @@ const page = () => {
       >
         <div className="mx-auto max-w-7xl xl:max-w-fit grid md:grid-cols-2 gap-6 items-stretch">
           {/* Left Box */}
-          
+          ewjewe
         </div>
       </section>
 
