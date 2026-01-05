@@ -443,6 +443,15 @@ const page = () => {
           </div>
         </div>
       </section>
+      <section
+        id="about"
+        className="bg-white py-20 px-5 sm:px-16 flex flex-col justify-center"
+      >
+        <div className="mx-auto max-w-7xl xl:max-w-fit grid md:grid-cols-2 gap-6 items-stretch">
+          {/* Left Box */}
+          
+        </div>
+      </section>
 
 
 
