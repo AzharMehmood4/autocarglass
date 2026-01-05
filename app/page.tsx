@@ -174,7 +174,6 @@ const page = () => {
   return (
     <>
       {/* Navbar */}
-      {/* COLLAPSIBLE NAVBAR */}
       <nav className="w-full sm:fixed sm:top-0 sm:left-0 sm:z-50 bg-white/90 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.08)] py-5 px-6">
         <div className="flex justify-between items-center">
           {/* Optional Logo */}
