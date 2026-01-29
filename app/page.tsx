@@ -174,6 +174,7 @@ const page = () => {
   return (
     <>
       {/* Navbar */}
+      {/* COLLAPSIBLE NAVBAR */}
       <nav className="w-full sm:fixed sm:top-0 sm:left-0 sm:z-50 bg-white/90 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.08)] py-5 px-6">
         <div className="flex justify-between items-center">
           {/* Optional Logo */}
@@ -417,7 +418,7 @@ const page = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Why choose Us  */}
       <section id="" className="bg-white  py-10 px-5 sm:px-16">
         <div className="max-w-full mx-auto text-center">
@@ -443,18 +444,257 @@ const page = () => {
           </div>
         </div>
       </section>
+
+      {/* About Us  */}
       <section
         id="about"
         className="bg-white py-20 px-5 sm:px-16 flex flex-col justify-center"
       >
         <div className="mx-auto max-w-7xl xl:max-w-fit grid md:grid-cols-2 gap-6 items-stretch">
           {/* Left Box */}
-          ewjewe
+          <div className="bg-gray-50 rounded-2xl p-10 shadow-md flex flex-col justify-between text-left h-full">
+            <div>
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                About Auto Car WindScreen Ltd
+              </h1>
+              <p className="text-gray-600 text-base mb-6 leading-relaxed">
+                Based in Birmingham, Auto Car WindScreen Ltd provides fast, reliable
+                windscreen repair and replacement using premium glass to suit
+                any budget. Our certified technicians offer same-day mobile
+                service across the region, backed by a lifetime guarantee for
+                your safety and peace of mind.
+              </p>
+              <div className="flex items-center mb-6">
+                <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                  ● Available for work
+                </span>
+              </div>
+            </div>
+            <button className="w-full sm:w-auto px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300">
+              Book a call with me
+            </button>
+          </div>
+
+          {/* Right Box */}
+          <div className="bg-gray-50 rounded-2xl p-6 shadow-md flex items-center justify-center h-full">
+            <img
+              src="/about.png"
+              alt="Creative workspace"
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
         </div>
       </section>
 
+      {/* what our customer says  */}
 
+      <section
+        id="reviews"
+        className="bg-white w-full pt-20 pb-16 px-5 sm:px-10 overflow-hidden"
+      >
+        {/* Section Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-black text-4xl font-semibold">
+            What Our Customers Say
+          </h2>
+          <p className="text-gray-400 mt-2 text-sm tracking-wide uppercase">
+            Don't just take our word for it. Here's what our satisfied customers
+            have to say about our service.
+          </p>
+        </div>
+        <div className="w-full flex justify-center py-0 relative">
+          <Swiper
+            modules={[Pagination]}
+            pagination={{ clickable: true }}
+            spaceBetween={20}
+            slidesPerGroup={1}
+            centeredSlides={false}
+            slidesOffsetBefore={0}
+            slidesOffsetAfter={0}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="w-full max-w-6xl pb-12"
+            style={{
+              overflow: "hidden",
+              paddingTop: "3rem",
+              paddingBottom: "3.5rem",
+              minHeight: "480px", // keep Swiper tall so avatar visible
+            }}
+          >
+            {reviews.map((card, i) => (
+              <SwiperSlide
+                key={i}
+                className="flex justify-center"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "stretch",
+                }}
+              >
+                <div
+                  className="bg-gray-50 rounded-2xl pt-16 pb-0 px-5 text-center shadow-md w-full max-w-xs relative transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  style={{
+                    minHeight: "280px",
+                    maxHeight: "340px", 
+                  }}
+                >
+                  {/* Profile Image */}
+                  <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20">
+                    <img
+                      src={card.img}
+                      alt={card.name}
+                      className="w-20 h-20 rounded-full border-4 border-gray-700 object-cover bg-white"
+                    />
+                  </div>
 
+                  <p className="text-sm my-4 leading-relaxed">
+                    "{card.review}"
+                  </p>
+                  <h4 className="font-semibold mb-1">{card.name}</h4>
+                  <p className="text-gray-500 text-sm mb-2">{card.location}</p>
+
+                  <div className="flex justify-center items-center mt-2">
+                    <span className="text-yellow-400 font-bold text-base">
+                      {card.rating}
+                    </span>
+                    <span className="text-yellow-400 text-lg ml-1">★</span>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Scoped Global Styles */}
+          <style jsx global>{`
+            .swiper-pagination {
+              margin-top: 1rem !important;
+              text-align: center !important;
+            }
+
+            .swiper-pagination-bullet {
+              background: #d1d5db !important;
+              opacity: 1 !important;
+              transition: background 0.3s ease, transform 0.3s ease;
+            }
+
+            .swiper-pagination-bullet-active {
+              background: #3d3e42 !important;
+              transform: scale(1.2);
+            }
+          `}</style>
+        </div>
+      </section>
+      {/* Contact Us  */}
+
+      <section id="contact" className="bg-white py-20 px-5 sm:px-16">
+        <div className="mx-auto grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Map */}
+          <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19800.89318907131!2d-0.12775800792082856!3d51.507351005119705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604ce2f56d7a9%3A0xdeb8a7f6b7e2f6b7!2sLondon%2C%20UK!5e0!3m2!1sen!2suk!4v1730170800000!5m2!1sen!2suk"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+
+            <div className="absolute inset-0 bg-black/10"></div>
+          </div>
+          {/* Right Form */}
+          <div className="bg-gray-50 p-10 rounded-2xl shadow-md border border-gray-100">
+            <h2 className="text-2xl font-semibold text-[#515255] mb-6">
+              Get In Touch
+            </h2>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 focus:border-[#777981] focus:ring-1 focus:ring-[#777981] outline-none transition"
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Enter Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 focus:border-[#777981] focus:ring-1 focus:ring-[#777981] outline-none transition"
+                />
+              </div>
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 focus:border-[#777981] focus:ring-1 focus:ring-[#777981] outline-none transition"
+              />
+
+              <textarea
+                name="message"
+                rows={5}
+                placeholder="Write your message..."
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 focus:border-[#777981] focus:ring-1 focus:ring-[#777981] outline-none transition resize-none"
+              ></textarea>
+
+              <button
+                type="submit"
+                className="w-full bg-[#3D3E42] hover:bg-[#52545a] text-white font-semibold py-3 shadow-md transition-all duration-300"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer  */}
+      <div className="bg-[#1A1A1A] text-gray-300 py-10 px-5 sm:px-16">
+        <div className=" mx-auto flex flex-col md:flex-row items-start justify-between gap-10">
+          {/* Left Section (Logo and Description) */}
+          <div className="md:w-1/2">
+            <div className="text-3xl font-bold text-white mb-3">
+              Auto Car WindScreen Ltd
+            </div>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Fast, reliable Auto WindScreen  repair - restore your view today.
+              Quality service and expert technicians serving Birmingham and
+              surrounding areas..
+            </p>
+          </div>
+
+          {/* Right Section (Contact Info) */}
+          <div className="md:w-1/2 md:text-right">
+            <div className="text-[#FACC15] text-sm font-semibold mb-2 tracking-wide">
+              CONTACT
+            </div>
+            <p className="text-gray-400 text-sm mb-1">📞 07466 332215</p>
+            <p className="text-gray-400 text-sm mb-1">
+              ✉️ info@AutoCarWindScreen .co.uk
+            </p>
+            <p className="text-gray-400 text-sm">
+              📍 74 The Radleys B33 OQX Birmingham
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Line */}
+        <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-xs">
+          © {new Date().getFullYear()} Auto Car WindScreen Ltd. All rights reserved.
+        </div>
+      </div>
     </>
   );
 };
